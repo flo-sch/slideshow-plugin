@@ -1,0 +1,17 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: flosch.slideshow::lang.columns.slide.id
+        searchable: true
+    image:
+        type: partial
+        path: ~/plugins/flosch/slideshow/models/slide/_image.htm
+    name:
+        label: flosch.slideshow::lang.columns.slide.name
+        searchable: true
+    link:
+        label: flosch.slideshow::lang.columns.slide.link
+        searchable: true

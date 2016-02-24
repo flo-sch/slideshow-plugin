@@ -1,0 +1,30 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: flosch.slideshow::lang.controller.form.slideshows.title
+
+# Model Form Field configuration
+form: $/flosch/slideshow/models/slideshow/fields.yml
+
+# Model Class name
+modelClass: Flosch\Slideshow\Models\Slideshow
+
+# Default redirect location
+defaultRedirect: flosch/slideshow/slideshows
+
+# Create page
+create:
+    title: flosch.slideshow::lang.controller.form.slideshows.create
+    redirect: flosch/slideshow/slideshows/update/:id
+    redirectClose: flosch/slideshow/slideshows
+    flashSave: flosch.slideshow::lang.controller.form.slideshows.flashCreate
+
+# Update page
+update:
+    title: flosch.slideshow::lang.controller.form.slideshows.update
+    redirect: flosch/slideshow/slideshows
+    redirectClose: flosch/slideshow/slideshows
+    flashSave: flosch.slideshow::lang.controller.form.slideshows.flashUpdate
+    flashDelete: flosch.slideshow::lang.controller.form.slideshows.flashDelete

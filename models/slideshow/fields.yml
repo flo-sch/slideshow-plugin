@@ -1,0 +1,8 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: flosch.slideshow::lang.fields.slideshow.name
+        searchable: true

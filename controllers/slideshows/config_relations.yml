@@ -1,0 +1,13 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+slides:
+    label: Slideshow slides
+    view:
+        list: $/flosch/slideshow/models/slide/columns.yml
+        toolbarButtons: create|delete
+    manage:
+        form: $/flosch/slideshow/models/slide/fields.yml
+        recordsPerPage: 20
+    emptyMessage: 'This slideshow currently does not have any attached slide.'

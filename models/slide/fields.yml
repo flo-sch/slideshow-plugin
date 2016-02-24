@@ -1,0 +1,18 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: flosch.slideshow::lang.fields.slide.name
+        span: left
+    link:
+        label: flosch.slideshow::lang.fields.slide.link
+        span: right
+    description:
+        label: flosch.slideshow::lang.fields.slide.description
+        type: richeditor
+    image:
+        label: flosch.slideshow::lang.fields.slide.image
+        type: fileupload
+        mode: image
