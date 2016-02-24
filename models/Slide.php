@@ -3,6 +3,7 @@
 namespace Flosch\Slideshow\Models;
 
 use Model;
+use Carbon\Carbon;
 
 use October\Rain\Database\Traits\Sortable;
 
@@ -48,4 +49,14 @@ class Slide extends Model
     public $belongsTo = [
         'slideshow' => ['Flosch\Slideshow\Models\Slideshow']
     ];
+
+    //
+    // Scopes for active slides
+    //
+    public function scopeIsPublished($query)
+    {
+        return $query
+            ->where('published', true);
+    }
+
 }

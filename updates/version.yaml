@@ -1,5 +1,8 @@
 1.0.1:
-    - First version of Slideshow
+    - 'First version of Slideshow'
     - create_slideshows_table.php
     - create_slides_table.php
     - seeder.php
+1.0.2:
+    - 'Updated table flosch_slideshow_slides'
+    - table_update_flosch_slideshow_slides.php

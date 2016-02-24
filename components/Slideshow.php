@@ -6,7 +6,7 @@ use Lang;
 
 use Cms\Classes\ComponentBase;
 
-use Flosch\Slideshow\Models\Slideshow as SlideshowModel;
+use Flosch\Slideshow\Models\Slide as SlideModel;
 
 class Slideshow extends ComponentBase
 {
@@ -36,9 +36,7 @@ class Slideshow extends ComponentBase
     {
         $slideshowId = $this->property('id');
 
-        $this->slideshow = SlideshowModel::where('id', '=', $slideshowId)
-            ->with('slides')
-            ->firstOrFail()
-        ;
+        $this->slideshow['slides'] = SlideModel::isPublished()
+        ->get();
     }
 }

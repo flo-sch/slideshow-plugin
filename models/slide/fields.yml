@@ -9,6 +9,18 @@ fields:
     link:
         label: flosch.slideshow::lang.fields.slide.link
         span: right
+    unpublished_at:
+        label: flosch.slideshow::lang.fields.slide.unpublished_at
+        span: right
+        type: datepicker
+    published_at:
+        label: flosch.slideshow::lang.fields.slide.published_at
+        span: left
+        type: datepicker
+    published:
+        label: flosch.slideshow::lang.fields.slide.published
+        span: left
+        type: checkbox
     description:
         label: flosch.slideshow::lang.fields.slide.description
         type: richeditor

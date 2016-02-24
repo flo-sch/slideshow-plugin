@@ -15,3 +15,7 @@ columns:
     link:
         label: flosch.slideshow::lang.columns.slide.link
         searchable: true
+    published:
+        label: flosch.slideshow::lang.columns.slide.published
+        span: left
+        type: checkbox
