@@ -9,9 +9,10 @@ class BuilderTableUpdateFloschSlideshowSlides extends Migration
     {
         Schema::table('flosch_slideshow_slides', function($table)
         {
-            $table->boolean('published')->default(1);
+            $table->boolean('published')->default(0);
             $table->dateTime('published_at')->nullable()->default(null);
-            $table->dateTime('unpublished_at')->nullable()->default(null);        });
+            $table->dateTime('unpublished_at')->nullable()->default(null);        
+        });
     }
     
     public function down()
