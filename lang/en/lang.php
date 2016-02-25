@@ -25,8 +25,9 @@
                     'placeholder' => 'Select slideshow',
                 ],
                 'number_of_slide' => [
-                    'title' => 'Nb slide',
-                    'description' => 'Number of slides to show',
+                    'title' => 'Slides limit',
+                    'description' => 'Maximal number of slides to display',
+                    'placeholder' => '5',
                 ],
             ],
         ],
@@ -59,15 +60,14 @@
         'slideshow' => [
             'id' => 'ID',
             'name' => 'Name',
-            'slides_count' => 'Number of slides',
-            'published' => 'Published',
+            'slides_count' => 'Number of slides'
         ],
         'slide' => [
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
             'link' => 'Target link',
-            'published' => 'Published',
+            'is_published' => 'Published?',
         ],
     ],
     'fields' => [
@@ -81,7 +81,7 @@
             'image' => 'Image',
             'unpublished_at' => 'Finish publishing',
             'published_at' => 'Start publishing',
-            'published' => 'Published',
+            'is_published' => 'Published?',
         ],
     ],
 ];

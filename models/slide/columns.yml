@@ -15,7 +15,7 @@ columns:
     link:
         label: flosch.slideshow::lang.columns.slide.link
         searchable: true
-    published:
-        label: flosch.slideshow::lang.columns.slide.published
+    is_published:
+        label: flosch.slideshow::lang.columns.slide.is_published
         span: left
         type: checkbox

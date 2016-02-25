@@ -23,7 +23,10 @@ class Slide extends Model
     public $fillable = [
         'name',
         'description',
-        'link'
+        'link',
+        'is_published',
+        'published_at',
+        'unpublished_at'
     ];
 
     /**
@@ -50,12 +53,31 @@ class Slide extends Model
         'slideshow' => ['Flosch\Slideshow\Models\Slideshow']
     ];
 
-    //
-    // Scopes for active slides
-    //
-    public function scopeIsPublished($query)
+    /**
+     * Restrict query to published slides only
+     */
+    public function scopePublished($query)
     {
+        $now = Carbon::now();
+
         return $query
-            ->where('published', true);
+            ->where('is_published', true)
+            ->where(function ($query) use ($now) {
+                $query
+                    ->where(function ($query) use ($now) {
+                        $query
+                            ->where('published_at', '>', $now)
+                            ->orWhereNull('published_at')
+                        ;
+                    })
+                    ->where(function ($query) use ($now) {
+                        $query
+                            ->where('unpublished_at', '<', $now)
+                            ->orWhereNull('unpublished_at')
+                        ;
+                    })
+                ;
+            })
+        ;
     }
 }

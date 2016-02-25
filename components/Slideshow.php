@@ -6,7 +6,7 @@ use Lang;
 
 use Cms\Classes\ComponentBase;
 
-use Flosch\Slideshow\Models\Slide as SlideModel;
+use Flosch\Slideshow\Models\Slideshow as SlideshowModel;
 
 class Slideshow extends ComponentBase
 {
@@ -23,16 +23,16 @@ class Slideshow extends ComponentBase
     public function defineProperties()
     {
         return [
-            'id' => [
-                'title' => 'flosch.slideshow::lang.components.slideshow.properties.id.title',
-                'description' => 'flosch.slideshow::lang.components.slideshow.properties.id.description',
-                'placeholder' => 'flosch.slideshow::lang.components.slideshow.properties.id.placeholder',
-                'type' => 'dropdown'
+            'slideshow' => [
+                'title'         => 'flosch.slideshow::lang.components.slideshow.properties.id.title',
+                'description'   => 'flosch.slideshow::lang.components.slideshow.properties.id.description',
+                'placeholder'   => Lang::get('flosch.slideshow::lang.components.slideshow.properties.id.placeholder'),
+                'type'          => 'dropdown'
             ],
             'numberOfSlide' => [
-                'title' => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.title',
-                'description' => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.description',
-                'placeholder' => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.placeholder',
+                'title'             => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.title',
+                'description'       => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.description',
+                'placeholder'       => Lang::get('flosch.slideshow::lang.components.slideshow.properties.number_of_slide.placeholder'),
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'default'           => '5',
@@ -40,18 +40,26 @@ class Slideshow extends ComponentBase
         ];
     }
 
+    public function getSlideshowOptions()
+    {
+        return SlideshowModel::lists('name', 'id');
+    }
+
     public function onRun()
     {
-        $slideshowId = $this->property('id');
-        $numberOfSlide = $this->property('numberOfSlide');
+        $slideshowId = (int) $this->property('slideshow');
+        $numberOfSlide = (int) $this->property('numberOfSlide');
 
-        $this->slideshow['slides'] = SlideModel::isPublished()
-            ->with([
-                'slideshow' => function ($query) use ($slideshowId) {
-                    $query->where('id', '=', $slideshowId);
+        $slideshowQueryBuilder = SlideshowModel::where('id', '=', $slideshowId)
+            ->with(['slides' => function ($query) use ($numberOfSlide) {
+                $query->published();
+
+                if ($numberOfSlide > 0) {
+                    $query->take($numberOfSlide);
                 }
-            ])
-            ->take($numberOfSlide)
-            ->get();
+            }])
+        ;
+
+        $this->slideshow = $slideshowQueryBuilder->firstOrFail();
     }
 }

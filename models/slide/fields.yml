@@ -17,8 +17,8 @@ fields:
         label: flosch.slideshow::lang.fields.slide.published_at
         span: left
         type: datepicker
-    published:
-        label: flosch.slideshow::lang.fields.slide.published
+    is_published:
+        label: flosch.slideshow::lang.fields.slide.is_published
         span: left
         type: checkbox
     description:
