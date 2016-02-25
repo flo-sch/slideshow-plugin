@@ -3,6 +3,7 @@
 namespace Flosch\Slideshow\Models;
 
 use Model;
+use Carbon\Carbon;
 
 use October\Rain\Database\Traits\Sortable;
 
@@ -22,7 +23,10 @@ class Slide extends Model
     public $fillable = [
         'name',
         'description',
-        'link'
+        'link',
+        'is_published',
+        'published_at',
+        'unpublished_at'
     ];
 
     /**
@@ -48,4 +52,32 @@ class Slide extends Model
     public $belongsTo = [
         'slideshow' => ['Flosch\Slideshow\Models\Slideshow']
     ];
+
+    /**
+     * Restrict query to published slides only
+     */
+    public function scopePublished($query)
+    {
+        $now = Carbon::now();
+
+        return $query
+            ->where('is_published', true)
+            ->where(function ($query) use ($now) {
+                $query
+                    ->where(function ($query) use ($now) {
+                        $query
+                            ->where('published_at', '>', $now)
+                            ->orWhereNull('published_at')
+                        ;
+                    })
+                    ->where(function ($query) use ($now) {
+                        $query
+                            ->where('unpublished_at', '<', $now)
+                            ->orWhereNull('unpublished_at')
+                        ;
+                    })
+                ;
+            })
+        ;
+    }
 }

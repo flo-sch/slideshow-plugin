@@ -23,22 +23,43 @@ class Slideshow extends ComponentBase
     public function defineProperties()
     {
         return [
-            'id' => [
-                'title' => 'flosch.slideshow::lang.components.slideshow.properties.id.title',
-                'description' => 'flosch.slideshow::lang.components.slideshow.properties.id.description',
-                'placeholder' => 'flosch.slideshow::lang.components.slideshow.properties.id.placeholder',
-                'type' => 'dropdown'
+            'slideshow' => [
+                'title'         => 'flosch.slideshow::lang.components.slideshow.properties.id.title',
+                'description'   => 'flosch.slideshow::lang.components.slideshow.properties.id.description',
+                'placeholder'   => Lang::get('flosch.slideshow::lang.components.slideshow.properties.id.placeholder'),
+                'type'          => 'dropdown'
+            ],
+            'numberOfSlide' => [
+                'title'             => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.title',
+                'description'       => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.description',
+                'placeholder'       => Lang::get('flosch.slideshow::lang.components.slideshow.properties.number_of_slide.placeholder'),
+                'type'              => 'string',
+                'validationPattern' => '^[0-9]+$',
+                'default'           => '5',
             ]
         ];
     }
 
+    public function getSlideshowOptions()
+    {
+        return SlideshowModel::lists('name', 'id');
+    }
+
     public function onRun()
     {
-        $slideshowId = $this->property('id');
+        $slideshowId = (int) $this->property('slideshow');
+        $numberOfSlide = (int) $this->property('numberOfSlide');
 
-        $this->slideshow = SlideshowModel::where('id', '=', $slideshowId)
-            ->with('slides')
-            ->firstOrFail()
+        $slideshowQueryBuilder = SlideshowModel::where('id', '=', $slideshowId)
+            ->with(['slides' => function ($query) use ($numberOfSlide) {
+                $query->published();
+
+                if ($numberOfSlide > 0) {
+                    $query->take($numberOfSlide);
+                }
+            }])
         ;
+
+        $this->slideshow = $slideshowQueryBuilder->firstOrFail();
     }
 }
