@@ -58,5 +58,4 @@ class Slide extends Model
         return $query
             ->where('published', true);
     }
-
 }

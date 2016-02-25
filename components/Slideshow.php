@@ -28,6 +28,14 @@ class Slideshow extends ComponentBase
                 'description' => 'flosch.slideshow::lang.components.slideshow.properties.id.description',
                 'placeholder' => 'flosch.slideshow::lang.components.slideshow.properties.id.placeholder',
                 'type' => 'dropdown'
+            ],
+            'numberOfSlide' => [
+                'title' => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.title',
+                'description' => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.description',
+                'placeholder' => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.placeholder',
+                'type'              => 'string',
+                'validationPattern' => '^[0-9]+$',
+                'default'           => '5',
             ]
         ];
     }
@@ -35,8 +43,15 @@ class Slideshow extends ComponentBase
     public function onRun()
     {
         $slideshowId = $this->property('id');
+        $numberOfSlide = $this->property('numberOfSlide');
 
         $this->slideshow['slides'] = SlideModel::isPublished()
-        ->get();
+            ->with([
+                'slideshow' => function ($query) use ($slideshowId) {
+                    $query->where('id', '=', $slideshowId);
+                }
+            ])
+            ->take($numberOfSlide)
+            ->get();
     }
 }
