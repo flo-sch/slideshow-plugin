@@ -18,6 +18,7 @@ You can include those dependencies following the guidelines of OctoberCMS theme 
 Parameter | Description
 ------------- | -------------
 **id** | the slideshow ID, required.
+**numberOfSlide** | number of slides to show, optional.
 
 In order to display this component, all you have to do is call it within a page, providing it's given ID (which can be found in the back-office list of slideshows) :
 
@@ -25,6 +26,7 @@ In order to display this component, all you have to do is call it within a page,
 
     [slideshow]
     id = 1
+    numberOfSlide = 5
     ==
 
     {% component 'slideshow' %}
