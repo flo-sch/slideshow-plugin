@@ -4,7 +4,7 @@ Once the plugin is installed in your OctoberCMS project, you will be able to adm
 
 ## Front-end dependencies
 
-The Slideshow component uses Twitter Bootstrap's DOM structure by default. In order to actually display your slides as a carousel, you will need to include Twitter Bootstrap CSS and JavaScript (including dependencies such as jQuery) in the theme you are working with.
+The Slideshow component uses [Twitter Bootstrap's Carousel](http://getbootstrap.com/javascript/#carousel) DOM structure by default. In order to actually display your slides as a carousel, you will need to include Twitter Bootstrap CSS and JavaScript (including dependencies such as jQuery) in the theme you are working with.
 
 *This plugin does not include such dependencies itself by purpose.*
 
@@ -13,11 +13,35 @@ The Slideshow component uses Twitter Bootstrap's DOM structure by default. In or
 
 You can include those dependencies following the guidelines of OctoberCMS theme development, either by using a theme layout, or by injecting it from your page controller.
 
+#### CSS
+- Include the [Twitter Bootstrap's stylesheet](https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css)
+
+#### JavaScript
+- Include the [Jquery library](https://code.jquery.com/jquery-1.12.1.min.js)
+- Include the [Twitter Bootstrap's library](https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js)
+
+#### Layout example
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <!-- [...] -->
+            <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet'>
+            <!-- [...] -->
+        </head>
+        <body>
+            <!-- [...] -->
+            <script src='https://code.jquery.com/jquery-1.12.1.min.js'></src>
+            <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></src>
+            <!-- [...] -->
+        </body>
+    </html>
+
 ## Display a slideshow
 
 Parameter | Description
 ------------- | -------------
-**id** | the slideshow ID, required.
+**slideshow** | the slideshow ID, required.
 **numberOfSlide** | number of slides to show, optional.
 
 In order to display this component, all you have to do is call it within a page, providing it's given ID (which can be found in the back-office list of slideshows) :
@@ -25,7 +49,7 @@ In order to display this component, all you have to do is call it within a page,
     url='/test-page-with-slideshow'
 
     [slideshow]
-    id = 1
+    slideshow = 1
     numberOfSlide = 5
     ==
 
