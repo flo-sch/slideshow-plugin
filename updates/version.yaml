@@ -6,3 +6,7 @@
 1.0.2:
     - 'Added is_published state and publication dates'
     - table_update_flosch_slideshow_slides.php
+1.0.3:
+    - 'Update documentation for Twitter Bootstrap sources'
+1.0.4:
+    - 'Update slides published query-scope (correct dates comparison)'
