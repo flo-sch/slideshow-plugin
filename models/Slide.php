@@ -66,13 +66,13 @@ class Slide extends Model
                 $query
                     ->where(function ($query) use ($now) {
                         $query
-                            ->where('published_at', '>', $now)
+                            ->where('published_at', '<=', $now)
                             ->orWhereNull('published_at')
                         ;
                     })
                     ->where(function ($query) use ($now) {
                         $query
-                            ->where('unpublished_at', '<', $now)
+                            ->where('unpublished_at', '>=', $now)
                             ->orWhereNull('unpublished_at')
                         ;
                     })
