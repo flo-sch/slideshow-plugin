@@ -38,7 +38,7 @@ class Plugin extends PluginBase
                 'label' => 'flosch.slideshow::lang.navigation.label',
                 'url' => Backend::url('flosch/slideshow/slideshows'),
                 'icon' => 'icon-picture-o',
-                'permissions' => ['book.slideshow.access_slideshow'],
+                'permissions' => ['flosch.slideshow.access_slideshow'],
                 'order' => 500,
                 'sideMenu' => [
                     'slideshows' => [
