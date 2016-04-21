@@ -10,3 +10,5 @@
     - 'Update documentation for Twitter Bootstrap sources'
 1.0.4:
     - 'Update slides published query-scope (correct dates comparison)'
+1.0.5:
+    - 'Fix permission settings'    
