@@ -56,6 +56,12 @@
             ],
         ],
     ],
+    'config' => [
+        'relation' => [
+            'label' => 'Slideshow slides',
+            'emptyMessage' => 'This slideshow currently does not have any attached slide.'
+        ],
+    ],
     'columns' => [
         'slideshow' => [
             'id' => 'ID',
