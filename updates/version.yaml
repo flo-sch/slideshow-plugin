@@ -11,4 +11,7 @@
 1.0.4:
     - 'Update slides published query-scope (correct dates comparison)'
 1.0.5:
-    - 'Fix permission settings'    
+    - 'Fix permission settings'
+1.0.6:
+    - 'Add persian translation (thanks to @cracki)'
+    - 'Add french translation'

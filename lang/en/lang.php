@@ -20,7 +20,7 @@
             'description' => 'Display a slideshow.',
             'properties' => [
                 'id' => [
-                    'title' => 'ID',
+                    'title' => 'Slideshow',
                     'description' => 'This value can be changed depending on the identifier used in the URL of this page. See the plugin\'s manual for more information.',
                     'placeholder' => 'Select slideshow',
                 ],
