@@ -55,11 +55,11 @@
                 'flashDelete' => 'The Slideshow has been successfully deleted',
             ],
         ],
-    ],
-    'config' => [
-        'relation' => [
-            'label' => 'Slideshow slides',
-            'emptyMessage' => 'This slideshow currently does not have any attached slide.'
+        'config' => [
+            'relation' => [
+                'label' => 'Slideshow slides',
+                'emptyMessage' => 'This slideshow currently does not have any attached slide.'
+            ],
         ],
     ],
     'columns' => [

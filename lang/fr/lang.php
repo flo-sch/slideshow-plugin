@@ -55,11 +55,11 @@
                 'flashDelete' => 'Le slideshow a bien été supprimé',
             ],
         ],
-    ],
-    'config' => [
-        'relation' => [
-            'label' => 'Slideshow slides',
-            'emptyMessage' => 'Aucune slide n\'est liée à ce slideshow pour le moment.'
+        'config' => [
+            'relation' => [
+                'label' => 'Slideshow slides',
+                'emptyMessage' => 'Aucune slide n\'est liée à ce slideshow pour le moment.'
+            ],
         ],
     ],
     'columns' => [
