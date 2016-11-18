@@ -32,7 +32,9 @@ class Slideshow extends Model
     ];
 
     public $hasMany = [
-        'slides' => 'Flosch\Slideshow\Models\Slide',
+        'slides' => [
+            'Flosch\Slideshow\Models\Slide'
+        ],
         'slides_count' => [
             'Flosch\Slideshow\Models\Slide',
             'count' => true

@@ -17,3 +17,5 @@
     - 'Add french translation'
 1.0.7:
     - 'Add german translation (thanks to @danielbruni)'
+1.0.8:
+    - 'Correct columns definition (thanks to @Jeime)'

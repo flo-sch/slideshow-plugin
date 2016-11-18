@@ -32,7 +32,9 @@ class Slide extends Model
     /**
      * Softly implement the TranslatableModel behavior.
      */
-    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement = [
+        '@RainLab.Translate.Behaviors.TranslatableModel'
+    ];
 
     /**
      * @var array Attributes that support translation, if available.
@@ -43,14 +45,18 @@ class Slide extends Model
     ];
 
     public $attachOne = [
-        'image' => ['System\Models\File']
+        'image' => [
+            'System\Models\File'
+        ]
     ];
 
     /**
      * @var array Model relations
      */
     public $belongsTo = [
-        'slideshow' => ['Flosch\Slideshow\Models\Slideshow']
+        'slideshow' => [
+            'Flosch\Slideshow\Models\Slideshow'
+        ]
     ];
 
     /**
