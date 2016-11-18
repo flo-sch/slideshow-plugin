@@ -18,4 +18,3 @@ columns:
     is_published:
         label: flosch.slideshow::lang.columns.slide.is_published
         span: left
-        type: checkbox
