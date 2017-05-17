@@ -2,6 +2,33 @@
 
 Once the plugin is installed in your OctoberCMS project, you will be able to administrate slideshows from the back-office, within the "Slideshow" tab. It allows you to create, edit and remove slideshows, and for each of those, to create, edit and remove slides.
 
+## Requirements
+
+This plugin uses an index to sort the slides.
+
+The generated query will include an `ORDER BY` statement which requires MySQL to run will the `only_full_group_by` set as false.
+
+To prevent errors from the admin panel, please turn the strict mode to false in your database MySQL configuration :
+
+Edit the `config/database.php` file, and add the following key to your MySQL config :
+
+```
+<?php
+
+return [
+    // ...
+    'connections' => [
+        // ...
+        'mysql' => [
+            // ...
+            'strict'    => false,
+        ],
+        // ...
+    ],
+    // ...
+];
+```
+
 ## Front-end dependencies
 
 The Slideshow component uses [Twitter Bootstrap's Carousel](http://getbootstrap.com/javascript/#carousel) DOM structure by default. In order to actually display your slides as a carousel, you will need to include Twitter Bootstrap CSS and JavaScript (including dependencies such as jQuery) in the theme you are working with.
